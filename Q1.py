@@ -20,14 +20,28 @@ for i in range(0, len(rawDict)):
 # raw = np.load("Q1_data/data.pkl").shape(5000, 2)
 
 xTrain, xTest, yTrain, yTest = train_test_split(xDict, yDict, test_size=0.1, random_state=57)
+dx={}
+dy={}
+numCount={}
+for i in range(0, 10):
+    dx["xTrain{0}".format(i)] = []
+    dy["yTrain{0}".format(i)] = []
+    numCount["count{0}".format(i)]=0
+j=0
+while j<4500:
+    arrayVal=random.randint(0, 9)
+    if numCount["count{0}".format(arrayVal)]>=450:
+        continue
+    else:
+        dx["xTrain{0}".format(arrayVal)].append(xTrain[j])
+        dy["yTrain{0}".format(arrayVal)].append(yTrain[j])
+        numCount["count{0}".format(arrayVal)]+=1
+        j+=1
 
 for i in range(0, 10):
-    list("xTrain{0}".format(i))
-    list("yTrain{0}".format(i))
-    "xCount{0}".format(i)=int()
+    print(numCount["count{0}".format(arrayVal)])
 
-for i in range(0, 4500):
-    arrayVal=random.randint(0, 9)
+        
 
 
 plt.scatter(xTest, yTest, label='rand', s=1)
