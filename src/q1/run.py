@@ -1,28 +1,23 @@
 from imports import *
 from distribute import distribute
 
+from training import train
+
 
 pickle_in = open("../../Q1_data/data.pkl", "rb")
 rawDict = pickle.load(pickle_in)
 
-random.shuffle(rawDict)
+np.random.shuffle(rawDict)
 
 xDict , yDict = np.hsplit(rawDict, 2)
 
-xTrain, xTest, yTrain, yTest = train_test_split(xDict, yDict, test_size=0.1, random_state=20)
+xTrain, xTest, yTrain, yTest = train_test_split(xDict, yDict, test_size=0.1, random_state=57)
 
-dx , dy = distribute(xTrain, yTrain)
-train_x = dx[5]
-train_y = dy[5]
+dx , dy , xTest, yTest = distribute(xTrain, yTrain, xTest, yTest)
 
-poly_reg = PolynomialFeatures(degree = 3)
-x_poly = poly_reg.fit_transform(train_x)
-pol_reg = LinearRegression()
-pol_reg.fit(x_poly, train_y)
+bias, variance = train(dx, dy, xTest, yTest)
 
-pred_y = pol_reg.predict(poly_reg.fit_transform(xTest))
-plt.plot(xTest, pred_y)
-plt.scatter(xDict, yDict, label='rand', s=1)
-plt.show()
+
+# now that we have the bias and the variance ,we can plot this data or whatever  
 
 
