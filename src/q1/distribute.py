@@ -10,8 +10,10 @@ def distribute(xTrain , yTrain):
         lx = []
         ly = []
         for a in range(i , i+450):
-            lx.append(xTrain[a])
-            ly.append(yTrain[a])
+            lx.append(float(xTrain[a]))
+            ly.append(float(yTrain[a]))
+        lx = np.asarray(lx)
+        ly = np.asarray(ly)
         dx.append(lx)
         dy.append(ly)
 
