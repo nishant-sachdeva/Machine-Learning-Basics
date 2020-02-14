@@ -11,17 +11,21 @@ rawDict = pickle.load(pickle_in)
 xDict , yDict = np.hsplit(rawDict, 2)
 
 xTrain, xTest, yTrain, yTest = train_test_split(xDict, yDict, test_size=0.1, random_state=57)
-temp=np.concatenate((xTrain, yTrain), axis =1)
+
+temp = np.concatenate((xTrain, yTrain), axis =1)
 np.random.shuffle(temp)
+
 xTrain, yTrain = np.hsplit(temp, 2)
 
-print(type(xTest), type(yTest))
+# print(type(xTest), type(yTest))
 
-dx , dy= distribute(xTrain, yTrain)
+dx , dy = distribute(xTrain, yTrain)
 
 bias, variance = train(dx, dy, xTest, yTest)
-plt.plot(bias, color = 'red')
-plt.plot(variance, color = 'blue')
+
+plt.plot(bias, color = 'red',label='bias')
+plt.plot(variance, color = 'blue', label='variance')
+plt.legend()
 plt.show()
 
 # now that we have the bias and the variance ,we can plot this data or whatever  
