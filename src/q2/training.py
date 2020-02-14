@@ -49,7 +49,7 @@ def train(dx, dy , xTest, yTest):
 			variance_wala_array.append(pred_y)
 			# for i in range(0, len(pred_y)):
 				# print(str(xTest[i][1]) + " : " + str(yTest[i]) + " : " + str(pred_y[i]))
-		bias = np.mean(np.abs(np.mean(bias_wala_array, axis=1)-yTest))
+		bias = np.sqrt(np.mean(np.square(np.mean(bias_wala_array, axis=1)-yTest)))
 		variance = np.mean(np.var(bias_wala_array, axis=1))
 		bi.append(bias*10)
 		vare.append(float(variance/100))
