@@ -22,6 +22,10 @@ dx , dy = distribute(xTrain, yTrain)
 
 bias, variance = train(dx, dy, xTest, yTest)
 
+
+table = np.vstack(([i for i in range(1, 100)], bias, variance)).T
+print(tabulate(table, headers=["Degree", "Bias", "Variance"], tablefmt='psql'))
+
 plt.plot(bias, color = 'red',label='bias')
 plt.plot(variance, color = 'blue', label='variance')
 plt.legend()

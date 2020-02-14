@@ -4,7 +4,7 @@ from imports import *
 
 def calculate_bias(mean_array, yTest):
 	
-	return np.mean ( np.absolute (np.subtract(mean_array ,yTest) ) )
+	return np.sqrt(np.mean(np.square(np.subtract(mean_array ,yTest) ) ) )
 
 
 
@@ -20,7 +20,7 @@ def calculate_bias_and_variance(bias_wala_array , yTest):
 	bias = 0
 	variance = 0
 
-	bias = np.mean(np.abs(np.mean(bias_wala_array, axis=1)-yTest))
+	bias = np.sqrt(np.mean(np.square(np.mean(bias_wala_array, axis=1)-yTest)))
 	variance = np.mean(np.var(bias_wala_array, axis=1))
 	return bias, variance
 
