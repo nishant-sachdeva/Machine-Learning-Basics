@@ -17,7 +17,6 @@ np.random.shuffle(temp)
 
 xTrain, yTrain = np.hsplit(temp, 2)
 
-# print(type(xTest), type(yTest))
 
 dx , dy = distribute(xTrain, yTrain)
 
