@@ -1,0 +1,7 @@
+1
+f[1] <= 42 and f[0] <= 77 and f[2] < 11, False
+f[1] <= 42 and f[0] <= 77 and f[2] >= 11, True
+f[1] <= 42 and f[0] > 77 and f[2] <= 7, True
+f[1] <= 42 and f[0] > 77 and f[2] > 7, False
+f[1] > 42 and f[2] > 6, False
+f[1] > 42 and f[2] <= 6, True
